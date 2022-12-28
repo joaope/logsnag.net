@@ -60,5 +60,6 @@ public sealed class LogSnagTests
         });
 
         Assert.Same(response, exception.Response);
+        Assert.Equal("Not successful response while publishing event to LogSnag.", exception.Message);
     }
 }
