@@ -16,6 +16,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{4EEA
 		.github\dependabot.yml = .github\dependabot.yml
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{79786E30-EE92-4C58-83F8-EE189683C016}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\build-test.yml = .github\workflows\build-test.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +42,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{27D5D30C-C25A-48FC-B269-29499085FF6A} = {9D484821-C013-415F-8B71-0734BB0D00E9}
 		{44E387CB-DE14-4023-B4F3-D32C555F4F10} = {F3AA8F25-188D-40CC-AE74-67E51191F4E4}
+		{79786E30-EE92-4C58-83F8-EE189683C016} = {4EEA5941-DD9B-4214-95C0-5444B8A3E86D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9B9132AF-389D-440B-AE73-AEB0E4CA5007}
