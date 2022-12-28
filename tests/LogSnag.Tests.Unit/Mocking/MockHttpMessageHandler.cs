@@ -16,7 +16,7 @@ namespace LogSnag.Tests.Unit.Mocking
                 Content = new StringContent(content, null, mediaType)
             };
         }
-
+        
         public MockHttpMessageHandler(HttpResponseMessage response)
         {
             _response = response;
