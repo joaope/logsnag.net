@@ -15,6 +15,6 @@ jobs:
       - uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '6.x'
-      - run: dotnet pack .\src\LogSnag -c Release -o .\artifacts 
-      - run: dotnet pack .\src\LogSnag.Extensions.Microsoft.DependencyInjection -c Release -o .\artifacts
-      - run: dotnet nuget push .\artifacts\*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }}
+      - run: dotnet pack ./src/LogSnag -c Release -o ./artifacts 
+      - run: dotnet pack ./src/LogSnag.Extensions.Microsoft.DependencyInjection -c Release -o ./artifacts
+      - run: dotnet nuget push ./artifacts/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }}
