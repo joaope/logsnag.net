@@ -16,7 +16,7 @@
 - [How to use](#how-to-use)
   - [Publish event](#publish-event)
   - [Publish insight](#publish-insight)
-- [Dependency Injection (ASP.NET Core)](#dependency-injection-aspnet-core)
+- [Dependency Injection (`IHttpClientFactory`)](#dependency-injection-ihttpclientfactory)
 
 ## Install
 
@@ -36,6 +36,10 @@ dotnet add package LogSnag.NET
 
 ```c#
 ILogSnagClient client = new LogSnagClient("token");
+
+// or with your own HttpClient
+
+ILogSnagClient client = new LogSnagClient(new HtppClient(), "token");
 ```
 
 ### Publish event
@@ -65,7 +69,7 @@ await client.Insight(new LogSnagInsight("project", "title", "value")
 });
 ```
 
-## Dependency Injection (ASP.NET Core)
+## Dependency Injection (`IHttpClientFactory`)
 
 Given you're in an application environment with access to an `IServiceCollection` container you can use this package instead:
 
