@@ -8,7 +8,6 @@ namespace LogSnag;
 public sealed class LogSnagHttpClient : ILogSnagHttpClient
 {
     private readonly HttpClient _httpClient;
-    private readonly string _apiToken;
 
     private static readonly JsonSerializerOptions PublishJsonSerializerOptions = new()
     {
@@ -44,10 +43,9 @@ public sealed class LogSnagHttpClient : ILogSnagHttpClient
         }
 
         _httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
-        _apiToken = apiToken;
 
         _httpClient.BaseAddress = new Uri("https://api.logsnag.com/v1/");
-        _httpClient.DefaultRequestHeaders.Clear();
+        _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiToken);
     }
 
     public async Task Publish(LogSnagEvent @event) => await Send(
@@ -78,11 +76,7 @@ public sealed class LogSnagHttpClient : ILogSnagHttpClient
 
         var logRequest = new HttpRequestMessage(httpMethod, requestUri)
         {
-            Content = new StringContent(body, null, "application/json"),
-            Headers =
-            {
-                Authorization = new AuthenticationHeaderValue("Bearer", _apiToken)
-            }
+            Content = new StringContent(body, null, "application/json")
         };
 
         HttpResponseMessage response;
