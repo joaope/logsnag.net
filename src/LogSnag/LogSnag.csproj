@@ -2,10 +2,10 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0</TargetFrameworks>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-    <LangVersion>10</LangVersion>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <Description>LogSnag .NET client</Description>
+    <PackageId>LogSnag</PackageId>
+    <PackageTags>logsnag;httpclient;logging</PackageTags>
+    <Version>1.2.3</Version>
   </PropertyGroup>
 
   <ItemGroup>
