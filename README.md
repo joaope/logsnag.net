@@ -8,7 +8,7 @@
 [![Publish Release](https://github.com/joaope/logsnag.net/actions/workflows/publish-stable.yml/badge.svg)](https://github.com/joaope/logsnag.net/actions/workflows/publish-stable.yml)
 
 | Package  | NuGet |
-| ------------- | ------------- |
+| :- | - |
 | LogSnag.NET | [![NuGet](https://img.shields.io/nuget/dt/LogSnag.NET.svg)](https://www.nuget.org/packages/LogSnag.NET/) |
 | LogSnag.NET.Extensions.Microsoft.DependencyInjection | [![NuGet](https://img.shields.io/nuget/dt/LogSnag.NET.Extensions.Microsoft.DependencyInjection.svg)](https://www.nuget.org/packages/LogSnag.NET.Extensions.Microsoft.DependencyInjection/) |
 
