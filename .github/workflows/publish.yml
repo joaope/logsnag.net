@@ -18,3 +18,5 @@ jobs:
       - run: dotnet pack .\src\LogSnag -c Release -o .\artifacts 
       - run: dotnet pack .\src\LogSnag.Extensions.Microsoft.DependencyInjection -c Release -o .\artifacts
       - run: dotnet nuget push .\artifacts\*.nupkg --source https://www.myget.org/F/logsnag/api/v3/index.json --api-key ${{ secrets.MYGET_API_KEY }}
+      - run: dotnet nuget push .\artifacts\*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }}
+      - run: dotnet nuget push .\artifacts\*.nupkg --source https://nuget.pkg.github.com/joaope/index.json --api-key ${{ secrets.GITHUB_TOKEN }}

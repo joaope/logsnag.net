@@ -7,7 +7,6 @@
     <RootNamespace>LogSnag</RootNamespace>
     <PackageId>LogSnag.Extensions.Microsoft.DependencyInjection</PackageId>
     <PackageTags>logsnag;httpclient;logging</PackageTags>
-    <Version>0.2.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
