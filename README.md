@@ -39,7 +39,7 @@ ILogSnagClient client = new LogSnagClient("token");
 
 // or with your own HttpClient
 
-ILogSnagClient client = new LogSnagClient(new HtppClient(), "token");
+ILogSnagClient client = new LogSnagClient(new HttpClient(), "token");
 ```
 
 ### Publish event
