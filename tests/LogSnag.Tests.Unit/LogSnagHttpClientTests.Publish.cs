@@ -3,13 +3,13 @@ using LogSnag.Tests.Unit.Mocking;
 
 namespace LogSnag.Tests.Unit;
 
-public sealed class LogSnagTests
+public sealed partial class LogSnagHttpClientTests
 {
     [Fact]
-    public async Task OkResponse_CorrectRequest()
+    public async Task Publish_OkResponse_CorrectRequest()
     {
         var httpClient = MockHttpClient.Ok;
-        var logSnag = new LogSnag(httpClient, "test-api-token");
+        var logSnag = new LogSnagHttpClient(httpClient, "test-api-token");
 
         await logSnag.Publish(new LogSnagEvent("logsnag-net", "test-channel", "AnEvent")
         {
@@ -38,11 +38,11 @@ public sealed class LogSnagTests
     }
 
     [Fact]
-    public async Task NotOkResponse_ThrowsResponseException()
+    public async Task Publish_NotOkResponse_ThrowsResponseException()
     {
         var response = new HttpResponseMessage(HttpStatusCode.BadGateway);
         var httpClient = new MockHttpClient(response);
-        var logSnag = new LogSnag(httpClient, "test-api-token");
+        var logSnag = new LogSnagHttpClient(httpClient, "test-api-token");
 
         var exception = await Assert.ThrowsAsync<LogSnagResponseException>(async () =>
         {

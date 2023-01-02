@@ -29,7 +29,7 @@ public sealed class LogSnagEvent
     public string Event { get; }
     public string? Description { get; set; }
     public string? Icon { get; set; }
-    public bool Notify { get; set; }
+    public bool Notify { get; set; } = true;
     public LogSnagTags Tags { get; } = new();
     public LogSnagParser? Parser { get; set; }
 }
