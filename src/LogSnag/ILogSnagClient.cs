@@ -1,6 +1,6 @@
 ﻿namespace LogSnag;
 
-public interface ILogSnagHttpClient
+public interface ILogSnagClient
 {
     /// <summary>
     /// Publish an event to LogSnag.

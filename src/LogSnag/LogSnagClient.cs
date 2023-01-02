@@ -5,7 +5,7 @@ using LogSnag.Internal;
 
 namespace LogSnag;
 
-public sealed class LogSnagHttpClient : ILogSnagHttpClient
+public sealed class LogSnagClient : ILogSnagClient
 {
     private readonly HttpClient _httpClient;
 
@@ -31,11 +31,11 @@ public sealed class LogSnagHttpClient : ILogSnagHttpClient
         }
     };
 
-    public LogSnagHttpClient(string apiToken) : this(new HttpClient(), apiToken)
+    public LogSnagClient(string apiToken) : this(new HttpClient(), apiToken)
     {
     }
 
-    public LogSnagHttpClient(HttpClient httpClient, string apiToken)
+    public LogSnagClient(HttpClient httpClient, string apiToken)
     {
         if (string.IsNullOrWhiteSpace(apiToken))
         {
