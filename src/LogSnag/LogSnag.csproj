@@ -1,9 +1,9 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0</TargetFrameworks>
     <Description>LogSnag .NET client</Description>
-    <PackageId>LogSnag</PackageId>
+    <PackageId>LogSnag.NET</PackageId>
     <PackageTags>logsnag;httpclient;logging</PackageTags>
   </PropertyGroup>
 

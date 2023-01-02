@@ -5,8 +5,8 @@
     <Description>LogSnag extensions for ASP.NET Core</Description>
     <AssemblyName>LogSnag.Extensions.Microsoft.DependencyInjection</AssemblyName>
     <RootNamespace>LogSnag</RootNamespace>
-    <PackageId>LogSnag.Extensions.Microsoft.DependencyInjection</PackageId>
-    <PackageTags>logsnag;httpclient;logging</PackageTags>
+    <PackageId>LogSnag.NET.Extensions.Microsoft.DependencyInjection</PackageId>
+    <PackageTags>logsnag;httpclient;logging;di;dependencyinjection;asp;core</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
