@@ -9,8 +9,8 @@
 
 | Package  | NuGet |
 | :- | - |
-| LogSnag.NET | [![NuGet](https://img.shields.io/nuget/dt/LogSnag.NET.svg)](https://www.nuget.org/packages/LogSnag.NET/) |
-| LogSnag.NET.Extensions.Microsoft.DependencyInjection | [![NuGet](https://img.shields.io/nuget/dt/LogSnag.NET.Extensions.Microsoft.DependencyInjection.svg)](https://www.nuget.org/packages/LogSnag.NET.Extensions.Microsoft.DependencyInjection/) |
+| *LogSnag.NET* | [![NuGet](https://img.shields.io/nuget/dt/LogSnag.NET.svg)](https://www.nuget.org/packages/LogSnag.NET/) |
+| *LogSnag.NET.Extensions.Microsoft.DependencyInjection* | [![NuGet](https://img.shields.io/nuget/dt/LogSnag.NET.Extensions.Microsoft.DependencyInjection.svg)](https://www.nuget.org/packages/LogSnag.NET.Extensions.Microsoft.DependencyInjection/) |
 
 - [Install](#install)
 - [How to use](#how-to-use)
