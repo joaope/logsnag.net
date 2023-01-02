@@ -1,5 +1,5 @@
 <!-- omit from toc -->
-# logsnag.net
+# LogSnag.NET
 
 [LogSnag](https://logsnag.com) client for .NET
 
