@@ -1,7 +1,7 @@
 <!-- omit from toc -->
 # logsnag.net
 
-LogSnag .NET client
+[LogSnag](https://logsnag.com) client for .NET
 
 [![CI](https://github.com/joaope/logsnag.net/actions/workflows/ci.yml/badge.svg)](https://github.com/joaope/logsnag.net/actions/workflows/ci.yml)
 
