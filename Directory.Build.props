@@ -17,11 +17,13 @@
     <PackageProjectUrl>https://github.com/joaope/logsnag.net</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageIcon>logsnag128x128.png</PackageIcon>
     <RepositoryUrl>https://github.com/joaope/logsnag.net</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\..\README.md" Pack="true" PackagePath="\" />
+    <None Include="..\..\README.md" Pack="true" PackagePath="" />
+    <None Include="..\..\assets\logsnag128x128.png" Pack="true" PackagePath="" />
   </ItemGroup>
 </Project>
