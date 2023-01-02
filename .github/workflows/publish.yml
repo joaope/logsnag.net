@@ -1,18 +1,9 @@
 name: Publish
 
 on:
-  workflow_run:
-    workflows:
-      - 'Build & Test'
-    types:
-      - completed
-    branches:
-      - 'main'
   push:
-    branches:
-      - 'main'
     tags:
-    - '*.*.*'
+      - '*.*.*'
 
 jobs:
   publish:
