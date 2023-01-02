@@ -7,10 +7,10 @@
 [![Publish Pre-Release](https://github.com/joaope/logsnag.net/actions/workflows/publish-pre.yml/badge.svg)](https://github.com/joaope/logsnag.net/actions/workflows/publish-pre.yml)
 [![Publish Release](https://github.com/joaope/logsnag.net/actions/workflows/publish-stable.yml/badge.svg)](https://github.com/joaope/logsnag.net/actions/workflows/publish-stable.yml)
 
-| Package  | NuGet |
-| - | - |
-| *LogSnag.NET* | [![NuGet](https://img.shields.io/nuget/dt/LogSnag.NET.svg)](https://www.nuget.org/packages/LogSnag.NET/) |
-| *LogSnag.NET.Extensions.Microsoft.DependencyInjection* | [![NuGet](https://img.shields.io/nuget/dt/LogSnag.NET.Extensions.Microsoft.DependencyInjection.svg)](https://www.nuget.org/packages/LogSnag.NET.Extensions.Microsoft.DependencyInjection/) |
+| Package  | NuGet | MyGet (Pre-Releases) |
+| - | - | - |
+| *LogSnag.NET* | [![NuGet](https://img.shields.io/nuget/dt/LogSnag.NET.svg)](https://www.nuget.org/packages/LogSnag.NET/) | [![MyGet](https://img.shields.io/myget/logsnag/dt/LogSnag.NET.svg)](https://www.myget.org/feed/logsnag/package/nuget/LogSnag.NET) |
+| *LogSnag.NET.Extensions.Microsoft.DependencyInjection* | [![NuGet](https://img.shields.io/nuget/dt/LogSnag.NET.Extensions.Microsoft.DependencyInjection.svg)](https://www.nuget.org/packages/LogSnag.NET.Extensions.Microsoft.DependencyInjection/) | [![NuGet](https://img.shields.io/myget/logsnag/dt/LogSnag.NET.Extensions.Microsoft.DependencyInjection.svg)](https://www.myget.org/feed/logsnag/package/nuget/LogSnag.NET.Extensions.Microsoft.DependencyInjection) |
 
 - [Install](#install)
 - [How to use](#how-to-use)
