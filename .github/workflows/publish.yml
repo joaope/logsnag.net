@@ -1,12 +1,21 @@
 name: Publish
 
 on:
+  workflow_run:
+    workflows:
+      - 'Build & Test'
+    types:
+      - completed
+    branches:
+      - 'main'
   push:
+    branches:
+      - 'main'
     tags:
     - '*.*.*'
 
 jobs:
-  build:
+  publish:
     name: 'Publish'
     runs-on: windows-latest
     
@@ -15,5 +24,6 @@ jobs:
       - uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '6.x'
+      - run: dotnet pack .\src\LogSnag -c Release -o .\artifacts 
       - run: dotnet pack .\src\LogSnag.Extensions.Microsoft.DependencyInjection -c Release -o .\artifacts
       - run: dotnet nuget push .\artifacts\*.nupkg --source https://www.myget.org/F/logsnag/api/v3/index.json --api-key ${{ secrets.MYGET_API_KEY }}
