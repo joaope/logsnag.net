@@ -5,16 +5,15 @@ namespace LogSnag;
 
 public sealed class LogSnagResponseException : LogSnagException
 {
+    private static readonly JsonSerializerOptions ErrorSerializerOptions = new()
+    {
+        PropertyNameCaseInsensitive = true
+    };
     private readonly Lazy<ErrorResponse?> _lazyError;
 
     public HttpResponseMessage RawResponse { get; }
     public HttpStatusCode StatusCode => RawResponse.StatusCode;
     public ErrorResponse? Error => _lazyError.Value;
-
-    private static readonly JsonSerializerOptions ErrorSerializerOptions = new()
-    {
-        PropertyNameCaseInsensitive = true
-    };
 
     public LogSnagResponseException(string message, string contentString, HttpResponseMessage rawResponse)
         : base(message)
@@ -23,6 +22,11 @@ public sealed class LogSnagResponseException : LogSnagException
 
         _lazyError = new Lazy<ErrorResponse?>(() =>
         {
+            if (string.IsNullOrWhiteSpace(contentString))
+            {
+                return null;
+            }
+
             try
             {
                 return JsonSerializer.Deserialize<ErrorResponse?>(contentString, ErrorSerializerOptions);
