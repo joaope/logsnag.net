@@ -42,7 +42,7 @@ public sealed partial class LogSnagClientTests
             await logSnag.Insight(new LogSnagInsight("logsnag-net", "some title", "and value"));
         });
 
-        Assert.Same(response, exception.Response);
+        Assert.Same(response, exception.RawResponse);
         Assert.Equal("Not successful response while publishing insight to LogSnag.", exception.Message);
     }
 }

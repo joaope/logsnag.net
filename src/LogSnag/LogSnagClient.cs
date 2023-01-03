@@ -92,7 +92,10 @@ public sealed class LogSnagClient : ILogSnagClient
 
         if (!response.IsSuccessStatusCode)
         {
-            throw new LogSnagResponseException(responseErrorMessage, response);
+            throw new LogSnagResponseException(
+                responseErrorMessage,
+                await response.Content.ReadAsStringAsync(),
+                response);
         }
     }
 }

@@ -59,7 +59,55 @@ public sealed partial class LogSnagClientTests
             });
         });
 
-        Assert.Same(response, exception.Response);
+        Assert.Same(response, exception.RawResponse);
+        Assert.Equal(HttpStatusCode.BadGateway, exception.StatusCode);
         Assert.Equal("Not successful response while publishing event to LogSnag.", exception.Message);
+    }
+
+    [Fact]
+    public async Task Publish_NotOkResponseWithErrorBody_ThrowsResponseException()
+    {
+        var httpClient = new MockHttpClient(new HttpResponseMessage(HttpStatusCode.BadRequest)
+        {
+            Content = new StringContent(@"{
+    ""message"": ""Validation Error"",
+    ""validation"": {
+        ""body"": [
+            {
+                ""path"": ""event"",
+                ""type"": ""too_small"",
+                ""message"": ""Event name may not be an empty string""
+            },
+            {
+                ""path"": ""tags.tag-1"",
+                ""type"": ""custom"",
+                ""message"": ""Tag keys must be lowercase characters, or dashes""
+            }
+        ]
+    }
+}")
+        });
+        var logSnag = new LogSnagClient(httpClient, "test-api-token");
+
+        var exception = await Assert.ThrowsAsync<LogSnagResponseException>(async () =>
+        {
+            await logSnag.Publish(new LogSnagEvent("logsnag-net", "test-channel", "AnEvent"));
+        });
+        
+        Assert.Equivalent(new LogSnagResponseException.ErrorResponse(
+            "Validation Error",
+            new LogSnagResponseException.ErrorResponse.ErrorResponseValidation(
+                new []
+                {
+                    new LogSnagResponseException.ErrorResponse.ErrorResponseValidation.ErrorResponseValidationBodyItem(
+                        "event",
+                        "too_small",
+                        "Event name may not be an empty string"),
+                    new LogSnagResponseException.ErrorResponse.ErrorResponseValidation.ErrorResponseValidationBodyItem(
+                        "tags.tag-1",
+                        "custom",
+                        "Tag keys must be lowercase characters, or dashes")
+                })),
+            exception.Error);
     }
 }
