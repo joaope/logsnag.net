@@ -31,10 +31,24 @@ public sealed class LogSnagClient : ILogSnagClient
         }
     };
 
+    /// <summary>
+    /// Creates a new instance of LogSnagClient.
+    ///
+    /// This will create an new internal HttpClient instance which will
+    /// be used throughout the lifetime of this instance
+    /// </summary>
+    /// <param name="apiToken">API token required for publishing your events to LogSnag</param>
     public LogSnagClient(string apiToken) : this(new HttpClient(), apiToken)
     {
     }
 
+    /// <summary>
+    /// Creates a new instance of LogSnagClient.
+    /// </summary>
+    /// <param name="httpClient">HTTP client which will be used to access LogSnag API.</param>
+    /// <param name="apiToken">API token required for publishing your events to LogSnag</param>
+    /// <exception cref="ArgumentException"></exception>
+    /// <exception cref="ArgumentNullException"></exception>
     public LogSnagClient(HttpClient httpClient, string apiToken)
     {
         if (string.IsNullOrWhiteSpace(apiToken))
@@ -48,6 +62,7 @@ public sealed class LogSnagClient : ILogSnagClient
         _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiToken);
     }
 
+    /// <inheritdoc cref="ILogSnagClient.Publish"/>
     public async Task Publish(LogSnagEvent @event) => await Send(
         HttpMethod.Post,
         @event,
@@ -56,6 +71,7 @@ public sealed class LogSnagClient : ILogSnagClient
         "Error while publishing an event to LogSnag. See inner exception for details.",
         "Not successful response while publishing event to LogSnag.");
 
+    /// <inheritdoc cref="ILogSnagClient.Insight"/>
     public async Task Insight(LogSnagInsight insight) => await Send(
         HttpMethod.Post,
         insight,

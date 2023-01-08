@@ -3,13 +3,11 @@
 public interface ILogSnagClient
 {
     /// <summary>
-    /// Publish an event to LogSnag.
-    /// 
-    /// This route is used to publish your events to LogSnag. These events may be designed
-    /// in any way that makes sense for your application.
+    /// Use this method to publish your events to LogSnag.
+    ///
+    /// These events may be designed in any way that makes sense for your application.
     /// </summary>
     /// <param name="event">Event to be published</param>
-    /// <returns></returns>
     Task Publish(LogSnagEvent @event);
 
     /// <summary>
@@ -19,7 +17,6 @@ public interface ILogSnagClient
     /// not captured as a regular event. You can publish them periodically or as soon as they
     /// occur and the latest value will be stored in LogSnag.
     /// </summary>
-    /// <param name="insight"></param>
-    /// <returns></returns>
+    /// <param name="insight">Insight to be published</param>
     Task Insight(LogSnagInsight insight);
 }

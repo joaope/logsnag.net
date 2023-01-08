@@ -2,6 +2,16 @@
 
 public sealed class LogSnagEvent
 {
+    /// <summary>
+    /// Creates a new instance of a LogSnagEvent.
+    ///
+    /// <paramref name="project"/>, <paramref name="channel"/> and
+    /// <paramref name="event"/> are mandatory fields that cannot be null or empty.
+    /// </summary>
+    /// <param name="project">Project name to where this event will be published to.</param>
+    /// <param name="channel">Channel name to where this event will be published to.</param>
+    /// <param name="event">Event name.</param>
+    /// <exception cref="ArgumentException"></exception>
     public LogSnagEvent(string project, string channel, string @event)
     {
         if (string.IsNullOrEmpty(project))
@@ -24,12 +34,45 @@ public sealed class LogSnagEvent
         Event = @event;
     }
 
+    /// <summary>
+    /// Project name. Mandatory field.
+    /// </summary>
     public string Project { get; }
+    
+    /// <summary>
+    /// Channel name. Mandatory field.
+    /// </summary>
     public string Channel { get; }
+
+    /// <summary>
+    /// Event name. Mandatory field.
+    /// </summary>
     public string Event { get; }
+
+    /// <summary>
+    /// Event description.
+    /// </summary>
     public string? Description { get; set; }
+
+    /// <summary>
+    /// Single Emoji.
+    /// </summary>
     public string? Icon { get; set; }
+
+    /// <summary>
+    /// <value>true</value> to send push notifications; otherwise <value>false</value>.
+    ///
+    /// This is <value>true</value> be default.
+    /// </summary>
     public bool Notify { get; set; } = true;
+
+    /// <summary>
+    /// Event tags
+    /// </summary>
     public LogSnagTags Tags { get; } = new();
+
+    /// <summary>
+    /// Parser type. Markdown or Text.
+    /// </summary>
     public LogSnagParser? Parser { get; set; }
 }
