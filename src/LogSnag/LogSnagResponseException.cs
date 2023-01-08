@@ -9,18 +9,18 @@ public sealed class LogSnagResponseException : LogSnagException
     {
         PropertyNameCaseInsensitive = true
     };
-    private readonly Lazy<ErrorResponse?> _lazyError;
+    private readonly Lazy<LogSnagErrorResponse?> _lazyError;
 
     public HttpResponseMessage RawResponse { get; }
     public HttpStatusCode StatusCode => RawResponse.StatusCode;
-    public ErrorResponse? Error => _lazyError.Value;
+    public LogSnagErrorResponse? Error => _lazyError.Value;
 
-    public LogSnagResponseException(string message, string contentString, HttpResponseMessage rawResponse)
+    internal LogSnagResponseException(string message, string? contentString, HttpResponseMessage rawResponse)
         : base(message)
     {
         RawResponse = rawResponse;
 
-        _lazyError = new Lazy<ErrorResponse?>(() =>
+        _lazyError = new Lazy<LogSnagErrorResponse?>(() =>
         {
             if (string.IsNullOrWhiteSpace(contentString))
             {
@@ -29,48 +29,12 @@ public sealed class LogSnagResponseException : LogSnagException
 
             try
             {
-                return JsonSerializer.Deserialize<ErrorResponse?>(contentString, ErrorSerializerOptions);
+                return JsonSerializer.Deserialize<LogSnagErrorResponse?>(contentString!, ErrorSerializerOptions);
             }
             catch (JsonException)
             {
                 return null;
             }
         });
-    }
-
-    public sealed class ErrorResponse
-    {
-        public string Message { get; }
-        public ErrorResponseValidation Validation { get; }
-
-        public ErrorResponse(string message, ErrorResponseValidation validation)
-        {
-            Message = message;
-            Validation = validation;
-        }
-
-        public sealed class ErrorResponseValidation
-        {
-            public ErrorResponseValidationBodyItem[] Body { get; }
-
-            public ErrorResponseValidation(ErrorResponseValidationBodyItem[] body)
-            {
-                Body = body;
-            }
-
-            public sealed class ErrorResponseValidationBodyItem
-            {
-                public string Path { get; }
-                public string Type { get; }
-                public string Message { get; }
-
-                public ErrorResponseValidationBodyItem(string path, string type, string message)
-                {
-                    Path = path;
-                    Type = type;
-                    Message = message;
-                }
-            }
-        }
     }
 }

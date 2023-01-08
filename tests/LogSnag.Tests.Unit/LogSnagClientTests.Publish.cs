@@ -94,16 +94,17 @@ public sealed partial class LogSnagClientTests
             await logSnag.Publish(new LogSnagEvent("logsnag-net", "test-channel", "AnEvent"));
         });
         
-        Assert.Equivalent(new LogSnagResponseException.ErrorResponse(
+        Assert.Equivalent(new LogSnagErrorResponse(
             "Validation Error",
-            new LogSnagResponseException.ErrorResponse.ErrorResponseValidation(
+            new LogSnagErrorResponse.Validations(
+                null,
                 new []
                 {
-                    new LogSnagResponseException.ErrorResponse.ErrorResponseValidation.ErrorResponseValidationBodyItem(
+                    new LogSnagErrorResponse.Validations.Item(
                         "event",
                         "too_small",
                         "Event name may not be an empty string"),
-                    new LogSnagResponseException.ErrorResponse.ErrorResponseValidation.ErrorResponseValidationBodyItem(
+                    new LogSnagErrorResponse.Validations.Item(
                         "tags.tag-1",
                         "custom",
                         "Tag keys must be lowercase characters, or dashes")
