@@ -62,7 +62,23 @@ public sealed class LogSnagClient : ILogSnagClient
         _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiToken);
     }
 
-    /// <inheritdoc cref="ILogSnagClient.Publish"/>
+    /// <summary>
+    /// Use this method to publish your events to LogSnag.
+    ///
+    /// These events may be designed in any way that makes sense for your application.
+    /// </summary>
+    /// <param name="event">Event to be published</param>
+    /// <exception cref="LogSnagException">
+    /// Something went wrong while publishing the event. Usually a connectivity
+    /// issue connecting to LogSnag API. See inner exception for more details.
+    /// </exception>
+    /// <exception cref="LogSnagResponseException">
+    /// Response from LogSnag API was not successful. HTTP  status code is not
+    /// returned by the API is not in the range 200-299.
+    ///
+    /// Inspect exception properties including <see cref="LogSnagResponseException.Error"/>
+    /// for more information.
+    /// </exception>
     public async Task Publish(LogSnagEvent @event) => await Send(
         HttpMethod.Post,
         @event,
@@ -71,7 +87,25 @@ public sealed class LogSnagClient : ILogSnagClient
         "Error while publishing an event to LogSnag. See inner exception for details.",
         "Not successful response while publishing event to LogSnag.");
 
-    /// <inheritdoc cref="ILogSnagClient.Insight"/>
+    /// <summary>
+    /// Publish an insight to LogSnag.
+    /// 
+    /// Insights are real-time events such as KPI, performance, and other metrics that are
+    /// not captured as a regular event. You can publish them periodically or as soon as they
+    /// occur and the latest value will be stored in LogSnag.
+    /// </summary>
+    /// <param name="insight">Insight to be published</param>
+    /// <exception cref="LogSnagException">
+    /// Something went wrong while publishing the insight. Usually a connectivity
+    /// issue connecting to LogSnag API. See inner exception for more details.
+    /// </exception>
+    /// <exception cref="LogSnagResponseException">
+    /// Response from LogSnag API was not successful. HTTP  status code is not
+    /// returned by the API is not in the range 200-299
+    ///
+    /// Inspect exception properties including <see cref="LogSnagResponseException.Error"/>
+    /// for more information.
+    /// </exception>
     public async Task Insight(LogSnagInsight insight) => await Send(
         HttpMethod.Post,
         insight,
