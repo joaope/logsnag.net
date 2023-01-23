@@ -1,10 +1,20 @@
 version: 2
 updates:
-- package-ecosystem: nuget
-  directory: "/"
+- package-ecosystem: github-actions
+  directory: /
+  reviewers:
+  - joaope
   schedule:
     interval: daily
-  open-pull-requests-limit: 10
+  labels:
+  - dependencies
+  - github-actions
+- package-ecosystem: nuget
+  directory: /
+  reviewers:
+  - joaope
+  schedule:
+    interval: daily
   labels:
   - dependencies
   - dotnet
