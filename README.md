@@ -77,7 +77,7 @@ Given you're in an application environment with access to an `IServiceCollection
 dotnet add package LogSnag.NET.Extensions.Microsoft.DependencyInjection
 ```
 
-Which allows one to register `ILogSnagClient` automatically coupled to a [managed HttpClient](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/http-requests):
+Which allows one to register `ILogSnagClient` coupled to a [managed HttpClient](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/http-requests):
 
 ```c#
 builder.Services.AddLogSnagClient("token");
