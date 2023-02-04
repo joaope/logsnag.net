@@ -36,9 +36,11 @@ dotnet add package LogSnag.NET
 
 ```c#
 ILogSnagClient client = new LogSnagClient("token");
+```
 
-// or with your own HttpClient
+Or with your own HttpClient
 
+```c#
 ILogSnagClient client = new LogSnagClient(new HttpClient(), "token");
 ```
 
