@@ -11,6 +11,16 @@ public interface ILogSnagClient
     Task Publish(LogSnagEvent @event);
 
     /// <summary>
+    /// Publishing historical data to LogSnag is similar to publishing a log, with the
+    /// added benefit of the option to include a timestamp field.
+    ///
+    /// This allows you to assign a different date and time to the event rather than
+    /// being recorded as the current time.
+    /// </summary>
+    /// <param name="historicalEvent">Historical event to be published</param>
+    Task PublishHistorical(LogSnagHistoricalEvent historicalEvent);
+
+    /// <summary>
     /// Publish an insight to LogSnag.
     /// 
     /// Insights are real-time events such as KPI, performance, and other metrics that are
