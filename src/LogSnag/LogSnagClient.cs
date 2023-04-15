@@ -73,8 +73,8 @@ public sealed class LogSnagClient : ILogSnagClient
     /// issue connecting to LogSnag API. See inner exception for more details.
     /// </exception>
     /// <exception cref="LogSnagResponseException">
-    /// Response from LogSnag API was not successful. HTTP  status code is not
-    /// returned by the API is not in the range 200-299.
+    /// Response from LogSnag API was not successful. HTTP  status code returned
+    /// by the API is not in the range 200-299.
     ///
     /// Inspect exception properties including <see cref="LogSnagResponseException.Error"/>
     /// for more information.
@@ -86,6 +86,33 @@ public sealed class LogSnagClient : ILogSnagClient
         "log",
         "Error while publishing an event to LogSnag. See inner exception for details.",
         "Not successful response while publishing event to LogSnag.");
+
+    /// <summary>
+    /// Publishing historical data to LogSnag is similar to publishing a log, with the
+    /// added benefit of the option to include a timestamp field.
+    ///
+    /// This allows you to assign a different date and time to the event rather than
+    /// being recorded as the current time.
+    /// </summary>
+    /// <param name="historicalEvent">Historical event to be published</param>
+    /// <exception cref="LogSnagException">
+    /// Something went wrong while publishing the event. Usually a connectivity
+    /// issue connecting to LogSnag API. See inner exception for more details.
+    /// </exception>
+    /// <exception cref="LogSnagResponseException">
+    /// Response from LogSnag API was not successful. HTTP  status code returned
+    /// by the API is not in the range 200-299.
+    ///
+    /// Inspect exception properties including <see cref="LogSnagResponseException.Error"/>
+    /// for more information.
+    /// </exception>
+    public async Task PublishHistorical(LogSnagHistoricalEvent historicalEvent) => await Send(
+        HttpMethod.Post,
+        historicalEvent,
+        PublishJsonSerializerOptions,
+        "log",
+        "Error while publishing an historical event to LogSnag. See inner exception for details.",
+        "Not successful response while publishing historical event to LogSnag.");
 
     /// <summary>
     /// Publish an insight to LogSnag.
