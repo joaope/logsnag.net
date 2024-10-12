@@ -23,4 +23,6 @@ jobs:
       with:
         dotnet-version: ${{ matrix.dotnet }}
     - run: dotnet build
+      env:
+        DOTNET_SYSTEM_GLOBALIZATION_INVARIANT: 1
     - run: dotnet test --no-build --verbosity normal
