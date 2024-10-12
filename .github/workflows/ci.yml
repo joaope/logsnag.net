@@ -15,7 +15,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest]
-        dotnet: ['3.x', '6.x']
+        dotnet: ['6.x']
         
     steps:
     - uses: actions/checkout@v4
