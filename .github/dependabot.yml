@@ -2,8 +2,6 @@ version: 2
 updates:
 - package-ecosystem: github-actions
   directory: /
-  reviewers:
-  - joaope
   schedule:
     interval: daily
   labels:
