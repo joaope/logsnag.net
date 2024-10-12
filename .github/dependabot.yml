@@ -9,8 +9,6 @@ updates:
   - github-actions
 - package-ecosystem: nuget
   directory: /
-  reviewers:
-  - joaope
   schedule:
     interval: daily
   labels:
